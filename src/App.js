@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-// /import { Header } from "./components/Header";
+import { Header } from "./components/Header";
 import { Body, Body2 } from "./components/Body";
 import "./App.css";
+import Counter from "./components/Counter";
 
 // const Body = () => (
 //   <p className="App-intro">
@@ -33,11 +34,8 @@ class App extends Component {
           text="this is working as it should"
           text2="no it doesn't"
         />
-        <Body
-          myFunc={this.add}
-          text="this is not working as it should"
-          text2="yes it does"
-        />
+        <Counter initialCount={0} />
+        <Counter initialCount={100} />
       </div>
     );
   }
