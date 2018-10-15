@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 
 export default class Counter extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    count: 0
+  };
 
-    this.state = {
-      count: props.initialCount
-    };
+  componentWillUnmount() {
+    console.log("unmounting");
+  }
+
+  componentDidMount() {
+    console.log("mounting");
   }
 
   increment = () => {
