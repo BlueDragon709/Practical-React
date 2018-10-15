@@ -7,7 +7,6 @@ export class Header extends Component {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1 className="App-title">{this.props.title}</h1>
-        <div>{this.props.myFunc(10, 12)}</div>
       </header>
     );
   }

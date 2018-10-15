@@ -1,24 +1,51 @@
 import React, { Component } from "react";
 import "./App.css";
 import ImageSlider from "./components/ImageSlider";
-
-// const Body = () => (
-//   <p className="App-intro">
-//     To get started, edit <code>src/App.js</code> and save to reload.
-//   </p>
-// );
+import Counter from "./components/Counter";
+import { Header } from "./components/Header";
 
 class App extends Component {
-  add(a, b) {
-    return a + b;
-  }
+  state = {
+    visible: true,
+    whichComponentToShow: "ImageSlider"
+  };
 
   render() {
-    return (
-      <div className="App">
-        <ImageSlider />
-      </div>
-    );
+    if (this.state.whichComponentToShow === "ImageSlider") {
+      return (
+        <div className="App">
+          <ImageSlider />
+          <button
+            onClick={() => {
+              this.setState({ whichComponentToShow: "Counter" });
+            }}
+          >
+            show counter
+          </button>
+        </div>
+      );
+    } else if (this.state.whichComponentToShow === "Counter") {
+      return (
+        <div className="App">
+          <Counter initialCount={100} />
+          <button
+            onClick={() => {
+              this.setState({ whichComponentToShow: "Header" });
+            }}
+          >
+            show header
+          </button>
+        </div>
+      );
+    } else if (this.state.whichComponentToShow === "Header") {
+      return (
+        <div className="App">
+          <Header />
+        </div>
+      );
+    }
+
+    return null;
   }
 }
 
