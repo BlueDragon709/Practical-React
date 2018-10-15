@@ -9,50 +9,54 @@ export default class MyForm extends Component {
   };
 
   handleChange = event => {
-    this.setState({ name: event.target.value });
+    const isCheckbox = event.target.type === "checkbox";
+    this.setState({
+      [event.target.name]: isCheckbox
+        ? event.target.checked
+        : event.target.value
+    });
   };
 
-  handleChange2 = event => {
-    this.setState({ favoritePet: event.target.value });
-  };
-
-  handleChange3 = event => {
-    this.setState({ rememberMe: event.target.checked });
-  };
-
-  handleChange4 = event => {
-    this.setState({ title: event.target.value });
-  };
-
-  handleSubmit = () => {
+  handleSubmit = event => {
+    event.preventDefault();
     console.log(this.state);
   };
 
   render() {
     return (
-      <div>
-        <input value={this.state.name} onChange={this.handleChange} />
+      <form onSubmit={this.handleSubmit}>
+        <input
+          name="name"
+          value={this.state.name}
+          onChange={this.handleChange}
+        />
         <br />
         <textarea
+          name="favoritePet"
           value={this.state.favoritePet}
-          onChange={this.handleChange2}
+          onChange={this.handleChange}
         />
         <br />
         <input
+          name="rememberMe"
           type="checkbox"
           checked={this.state.rememberMe}
-          onChange={this.handleChange3}
+          onChange={this.handleChange}
         />
         <div>
-          <select value={this.state.title} onChange={this.handleChange4}>
+          <select
+            name="title"
+            value={this.state.title}
+            onChange={this.handleChange}
+          >
             <option>Mr.</option>
             <option>Miss.</option>
             <option>Ms.</option>
             <option>Mrs.</option>
           </select>
         </div>
-        <button onClick={this.handleSubmit}>submit</button>
-      </div>
+        <button type="sumbit">submit</button>
+      </form>
     );
   }
 }
